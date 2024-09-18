@@ -42,6 +42,7 @@ def forbidden(error) -> str:
 
 @app.before_request
 def authorization_check():
+    """ validates every request """
     if auth is not None:
         if auth.require_auth(request.path, [
             '/api/v1/status/',
