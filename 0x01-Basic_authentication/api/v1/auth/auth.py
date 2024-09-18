@@ -2,6 +2,8 @@
 """
     template for all authentication system
 """
+from typing import List
+from typing import TypeVar
 
 class Auth:
     """
