@@ -1,4 +1,12 @@
+#!/usr/bin/env python3
+"""
+    template for all authentication system
+"""
+
 class Auth:
+    """
+        Represent authentication system
+    """
     def require_auth(self, path: str, excluded_paths: List[str]) -> bool:
         return False
 
