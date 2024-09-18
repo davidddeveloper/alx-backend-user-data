@@ -5,6 +5,7 @@
 from typing import List
 from typing import TypeVar
 
+
 class Auth:
     """
         Represent authentication system
