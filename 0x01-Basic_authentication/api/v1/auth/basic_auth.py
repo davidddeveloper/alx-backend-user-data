@@ -58,7 +58,11 @@ class BasicAuth(Auth):
         if not user_pwd:
             return None
 
-        query_users_result = User.search({"email": user_email})
+        try:
+            query_users_result = User.search({"email": user_email})
+        except Exception:
+            return None
+
         if query_users_result == []:
             return None
 
