@@ -66,9 +66,11 @@ def authorization_check():
                 abort(401)
             if not auth.current_user(request):
                 abort(403)
-            if auth.session_cookie(request):
-                return None
             request.current_user = auth.current_user(request)
+        if auth.authorization_header(request):
+            abort(401)
+        if auth.session_cookie(request):
+            return(None)
 
 
 if __name__ == "__main__":
