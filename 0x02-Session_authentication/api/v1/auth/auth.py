@@ -4,6 +4,7 @@
 """
 from typing import List
 from typing import TypeVar
+import os
 
 
 class Auth:
@@ -37,3 +38,9 @@ class Auth:
     def current_user(self, request=None) -> TypeVar('User'):
         """ return the current user """
         return None
+
+    def session_cookie(self, request=None):
+        """ returns a cookie value from a request """
+        if not request:
+            return None
+        return request.cookies.ge(os.getenv(SESSION_NAME))
