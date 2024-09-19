@@ -56,7 +56,8 @@ def authorization_check():
         if auth.require_auth(request.path, [
             '/api/v1/status/',
             '/api/v1/unauthorized/',
-            '/api/v1/forbidden/'
+            '/api/v1/forbiddien/',
+            '/api/v1/auth_session/login/'
             ]
         ):
             pass
@@ -66,6 +67,8 @@ def authorization_check():
             if not auth.current_user(request):
                 abort(403)
             request.current_user = auth.current_user(request)
+        if auth.session_cookie(request):
+            return None
 
 
 if __name__ == "__main__":
