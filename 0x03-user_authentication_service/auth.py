@@ -76,3 +76,16 @@ class Auth:
             user.session_id = session_id
             self._db._session.commit()
             return session_id
+
+    def get_user_from_session_id(self, session_id):
+        """
+            Find user by session id
+        """
+        try:
+            user = self._db.find_user_by(**{"session_id": session_id})
+
+        except NoResultFound:
+            return None
+
+        else:
+            return User
