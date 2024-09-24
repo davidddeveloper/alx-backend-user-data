@@ -54,7 +54,7 @@ class Auth:
             else:
                 return False
 
-    def _generate_uuid() -> uuid:
+    def _generate_uuid():
         """
             Generate uuids
         """
