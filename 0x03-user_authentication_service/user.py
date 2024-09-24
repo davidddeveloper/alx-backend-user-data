@@ -3,8 +3,10 @@
     create a SQLAlchemy model named User
     for a database table named users
 """
-from sqlalchemy.orm.declarative_base import Base
+from sqlalchemy.orm import declarative_base
 from sqlalchemy import Column, String, Integer
+
+Base = declarative_base()
 
 
 class User(Base):
@@ -14,6 +16,7 @@ class User(Base):
     __tablename__ = "users"
 
     id = Column(Integer, primary_key=True)
-    email = Column(
-
-
+    email = Column(String(250), nullable=False)
+    hashed_password = Column(String(250), nullable=False)
+    session_id = Column(String(250), nullable=False)
+    reset_token = Column(String(250), nullable=False)
