@@ -2,7 +2,7 @@
 """
     module: basic flask app
 """
-from flask import Flask, jsonify
+from flask import Flask, jsonify, request
 from auth import Auth
 
 app = Flask(__name__)
@@ -14,7 +14,10 @@ def home():
 
 
 @app.route("/users", methods=['POST'])
-def users(email, password):
+def users():
+    email = request.form.get('email')
+    password = request.form.get('password')
+
     try:
         user = AUTH.register_user(email, password)
     except ValueError:
@@ -28,3 +31,5 @@ def users(email, password):
 
 
 AUTH = Auth()
+if __name__ == '__main__':
+    app.run()
