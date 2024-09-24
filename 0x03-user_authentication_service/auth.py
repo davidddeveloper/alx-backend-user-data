@@ -95,9 +95,10 @@ class Auth:
             destroy session
         """
         try:
-            user = self._db.find_user_by(**{"session_id": session_id})
+            user = self._db.find_user_by(**{"user_id": user_id})
 
         except NoResultFound:
             pass
 
         user.session_id = None
+        self._db._session.commit()
