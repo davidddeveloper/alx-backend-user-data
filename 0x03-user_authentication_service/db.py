@@ -60,6 +60,8 @@ class DB:
 
         user = self.find_user_by(**{"id": user_id})
 
+        self._session.add(user)
+
         for key, val in kwargs.items():
             setattr(user, key, val)
 
