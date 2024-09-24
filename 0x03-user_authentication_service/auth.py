@@ -90,7 +90,7 @@ class Auth:
         else:
             return User
 
-    def destroy_session(self, user_id):
+    def destroy_session(self, user_id: str) -> None:
         """
             destroy session
         """
