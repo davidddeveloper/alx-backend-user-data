@@ -54,8 +54,25 @@ class Auth:
             else:
                 return False
 
-    def _generate_uuid():
+    def _generate_uuid(self) -> str:
         """
             Generate uuids
         """
         return str(uuid.uuid4())
+
+    def create_session(self, email: str):
+        """
+            create a session id
+        """
+
+        try:
+            user = self._db.find_user_by(**{"email": email})
+
+        except NoResultFound:
+            pass
+
+        else:
+            session_id = self._generate_uuid()
+            user.session_id = session_id
+            self._db._session.commit()
+            return session_id
