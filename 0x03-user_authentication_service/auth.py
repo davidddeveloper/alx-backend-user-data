@@ -102,3 +102,18 @@ class Auth:
 
         user.session_id = None
         self._db._session.commit()
+
+    def get_reset_password_token(self, email):
+        """
+            Reset password
+        """
+        try:
+            user = self._db.find_user_by(**{"email": email})
+
+        except NoResultFound:
+            raise ValueError(f"No user found for the {email}")
+
+        else:
+            reset_token = self._generate_uuid()
+            user.reset_token = reset_token
+            self._db._session.commit()
