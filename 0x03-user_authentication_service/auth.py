@@ -117,5 +117,5 @@ class Auth:
             reset_token = self._generate_uuid()
             user.reset_token = reset_token
             self._db._session.commit()
-        
+
         return reset_token
