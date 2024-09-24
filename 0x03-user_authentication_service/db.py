@@ -42,3 +42,10 @@ class DB:
         self._session.commit()
 
         return user
+
+    def find_user_by(self, **kwargs):
+        """
+            Finds a user
+        """
+        user = self._session.query(User).filter_by(**kwargs)
+        return user
