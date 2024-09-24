@@ -101,4 +101,4 @@ class Auth:
             pass
 
         user.session_id = None
-        self._db._session.commit()
+        self._db.__session.commit()
