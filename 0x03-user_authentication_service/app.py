@@ -100,6 +100,24 @@ def get_reset_password_token():
         )
 
 
+@app.route("/reset_password")
+def update_password():
+    """
+        update password
+    """
+    email = request.args.get("email")
+    reset_token = request.args.get("reset_token")
+    new_password = request.args.get("new_password")
+
+    try:
+        AUTH.update_password(reset_token, new_password)
+        return jsonify(
+            {"email": email, "message": "Password updated"}
+        )
+    except ValueError:
+        abort(403)
+
+
 AUTH = Auth()
 if __name__ == '__main__':
     app.run()
