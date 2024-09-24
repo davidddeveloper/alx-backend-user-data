@@ -52,3 +52,13 @@ class DB:
         if user is None:
             raise NoResultFound
         return user
+
+    def update_user(self, user_id, **kwargs):
+        """
+            Update a user model
+        """
+
+        user = self.find_user_by(**{"id": user_id})
+
+        for key, val in kwargs.items():
+            setattr(user, key, val)
