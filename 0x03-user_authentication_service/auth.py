@@ -99,7 +99,7 @@ class Auth:
             user = self._db.find_user_by(**{"id": user_id})
 
         except NoResultFound:
-            pass
+            return None
 
         user.session_id = None
         self._db._session.commit()
