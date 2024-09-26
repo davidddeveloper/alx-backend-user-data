@@ -9,6 +9,7 @@ from sqlalchemy.orm.exc import NoResultFound
 
 from user import Base
 from user import User
+import bcrypt
 
 
 class DB:
@@ -32,7 +33,7 @@ class DB:
             self.__session = DBSession()
         return self.__session
 
-    def add_user(self, email, hashed_password):
+    def add_user(self, email: str, hashed_password: str) -> User:
         """
             Add a user to db
         """
