@@ -61,14 +61,14 @@ class DB:
 
         try:
             user = self.find_user_by(**{"id": user_id})
+
         except Exception:
             raise ValueError(
                 "You passed values that does not equal to user attribute")
 
-        self._session.add(user)
-
-        for key, val in kwargs.items():
-            setattr(user, key, val)
+        else:
+            for key, val in kwargs.items():
+                setattr(user, key, val)
 
         self._session.commit()
 
