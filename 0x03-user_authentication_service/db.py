@@ -61,6 +61,8 @@ class DB:
 
         try:
             user = self.find_user_by(**{"id": user_id})
+        except NoResultFound:
+            return None
 
         except Exception:
             raise ValueError(
@@ -68,6 +70,9 @@ class DB:
 
         else:
             for key, val in kwargs.items():
+                if key not in user.__dict__:
+                    raise ValueError(
+                        'Existing attributes not found in user')
                 setattr(user, key, val)
 
         self._session.commit()
