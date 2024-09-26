@@ -59,7 +59,11 @@ class DB:
             Update a user model
         """
 
-        user = self.find_user_by(**{"id": user_id})
+        try:
+            user = self.find_user_by(**{"id": user_id})
+        except Exception:
+            raise ValueError(
+                "You passed values that does not equal to user attribute")
 
         self._session.add(user)
 
