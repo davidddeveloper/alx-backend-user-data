@@ -62,9 +62,6 @@ class DB:
         try:
             user = self.find_user_by(**{"id": user_id})
 
-        except NoResultFound:
-            return None
-
         except Exception:
             raise ValueError(
                 "You passed values that does not equal to user attribute")
