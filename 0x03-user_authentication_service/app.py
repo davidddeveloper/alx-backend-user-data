@@ -87,7 +87,7 @@ def get_reset_password_token():
     """
         get reset password token
     """
-    email = request.args.get('email')
+    email = request.form.get('email')
     try:
         token = AUTH.get_reset_password_token(email)
 
