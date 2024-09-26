@@ -54,7 +54,7 @@ class DB:
             raise NoResultFound
         return user
 
-    def update_user(self, user_id, **kwargs):
+    def update_user(self, user_id: int, **kwargs) -> None:
         """
             Update a user model
         """
@@ -67,3 +67,5 @@ class DB:
             setattr(user, key, val)
 
         self._session.commit()
+
+        return None
