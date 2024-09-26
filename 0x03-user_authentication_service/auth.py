@@ -104,7 +104,7 @@ class Auth:
         user.session_id = None
         self._db._session.commit()
 
-    def get_reset_password_token(self, email):
+    def get_reset_password_token(self, email: str) -> str:
         """
             Reset password
         """
@@ -121,7 +121,7 @@ class Auth:
 
         return reset_token
 
-    def update_password(self, reset_token, password):
+    def update_password(self, reset_token: str, password: str) -> None:
         """
             Update password
         """
