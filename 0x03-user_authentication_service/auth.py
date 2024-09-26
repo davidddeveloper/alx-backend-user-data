@@ -89,7 +89,7 @@ class Auth:
             return None
 
         else:
-            return User
+            return user
 
     def destroy_session(self, user_id: str) -> None:
         """
